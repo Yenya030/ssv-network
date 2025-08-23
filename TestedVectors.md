@@ -1,3 +1,4 @@
+
 # Tested Attack Vectors
 
 This document tracks security vectors analyzed in the repository.
@@ -36,3 +37,4 @@ This document tracks security vectors analyzed in the repository.
 - **Approach**: Attempted `slither contracts/SSVNetwork.sol`; compilation failed due to missing dependency remappings.
 - **Result**: Static analysis could not complete; manual review performed instead.
 
+- Duplicate operator registration: Verified that attempting to register an operator with an existing public key reverts with `OperatorAlreadyExists`, preventing duplicate operator creation.
