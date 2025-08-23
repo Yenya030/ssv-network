@@ -1,4 +1,5 @@
 
+
 # Tested Attack Vectors
 
 This document tracks security vectors analyzed in the repository.
@@ -38,3 +39,8 @@ This document tracks security vectors analyzed in the repository.
 - **Result**: Static analysis could not complete; manual review performed instead.
 
 - Duplicate operator registration: Verified that attempting to register an operator with an existing public key reverts with `OperatorAlreadyExists`, preventing duplicate operator creation.
+
+| Vector | Severity | Status | Notes |
+|-------|----------|--------|-------|
+| Unauthorized update of network fee through SSVDAO module | High | Vulnerable | `SSVDAO.updateNetworkFee` lacks access control allowing any caller to change the fee. |
+| Unauthorized minting of SSV token | Medium | Mitigated | `SSVToken.mint` is restricted to owner; non-owners revert. |
