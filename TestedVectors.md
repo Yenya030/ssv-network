@@ -1,5 +1,6 @@
 
 
+
 # Tested Attack Vectors
 
 This document tracks security vectors analyzed in the repository.
@@ -18,3 +19,7 @@ This document tracks security vectors analyzed in the repository.
 | Vector | Severity | Status | Notes |
 |-------|---------|--------|-------|
 | Unauthorized upgrade by non-owner | High | Managed (reverts) | Non-owner upgrade attempt reverted with `Ownable: caller is not the owner` |
+
+| Date | Vector | Severity | Result |
+|------|--------|----------|--------|
+| 2025-08-23 | Reentrancy via malicious ERC20 during network earnings withdrawal | Medium | Mitigated: operator earnings unchanged during reentrancy attempt |
