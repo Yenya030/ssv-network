@@ -101,13 +101,13 @@ export const DataGenerator = {
   },
 };
 
-export const initializeContract = async function () {
+export const initializeContract = async function (tokenName: string = 'SSVToken') {
   owners = await hre.viem.getWalletClients();
 
   lastValidatorId = 1;
   lastOperatorId = 0;
 
-  ssvToken = await hre.viem.deployContract('SSVToken');
+  ssvToken = await hre.viem.deployContract(tokenName);
   const ssvOperatorsMod = await hre.viem.deployContract('SSVOperators');
   const ssvClustersMod = await hre.viem.deployContract('SSVClusters');
   const ssvDAOMod = await hre.viem.deployContract('SSVDAO');
