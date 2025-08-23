@@ -10,6 +10,16 @@ describe("SSVDAO module access control", function () {
     await expect(dao.connect(attacker).updateNetworkFee(fee)).to.emit(dao, "NetworkFeeUpdated").withArgs(0, fee);
   });
 
+  it("allows any address to update maximum operator fee", async function () {
+    const [attacker] = await ethers.getSigners();
+    const Dao = await ethers.getContractFactory("SSVDAO");
+    const dao = await Dao.deploy();
+    const maxFee = 5_000_000; // arbitrary value
+    await expect(dao.connect(attacker).updateMaximumOperatorFee(maxFee))
+      .to.emit(dao, "OperatorMaximumFeeUpdated")
+      .withArgs(maxFee);
+  });
+
   it("restricts minting of SSVToken to owner", async function () {
     const [, attacker] = await ethers.getSigners();
     const Token = await ethers.getContractFactory("SSVToken");
