@@ -44,3 +44,4 @@ This document tracks security vectors analyzed in the repository.
 |-------|----------|--------|-------|
 | Unauthorized update of network fee through SSVDAO module | High | Vulnerable | `SSVDAO.updateNetworkFee` lacks access control allowing any caller to change the fee. |
 | Unauthorized minting of SSV token | Medium | Mitigated | `SSVToken.mint` is restricted to owner; non-owners revert. |
+| Unauthorized update of maximum operator fee through SSVDAO module | High | Vulnerable | `SSVDAO.updateMaximumOperatorFee` lacks access control enabling arbitrary fee limits. |
