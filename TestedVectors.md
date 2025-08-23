@@ -1,4 +1,5 @@
 
+
 # Tested Attack Vectors
 
 This document tracks security vectors analyzed in the repository.
@@ -13,3 +14,7 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (access control)
   - *Test File*: `test/security/update-module.ts`
   - *Result*: Non-owner calls revert with "Ownable: caller is not the owner"; vector managed.
+
+| Vector | Severity | Status | Notes |
+|-------|---------|--------|-------|
+| Unauthorized upgrade by non-owner | High | Managed (reverts) | Non-owner upgrade attempt reverted with `Ownable: caller is not the owner` |
