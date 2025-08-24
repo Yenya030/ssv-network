@@ -37,4 +37,44 @@ describe("SSVDAO module access control", function () {
       .withArgs(newLimit);
   });
 
+  it("allows any address to update declare operator fee period", async function () {
+    const [attacker] = await ethers.getSigners();
+    const Dao = await ethers.getContractFactory("SSVDAO");
+    const dao = await Dao.deploy();
+    const newPeriod = 1_000;
+    await expect(dao.connect(attacker).updateDeclareOperatorFeePeriod(newPeriod))
+      .to.emit(dao, "DeclareOperatorFeePeriodUpdated")
+      .withArgs(newPeriod);
+  });
+
+  it("allows any address to update execute operator fee period", async function () {
+    const [attacker] = await ethers.getSigners();
+    const Dao = await ethers.getContractFactory("SSVDAO");
+    const dao = await Dao.deploy();
+    const newPeriod = 1_000;
+    await expect(dao.connect(attacker).updateExecuteOperatorFeePeriod(newPeriod))
+      .to.emit(dao, "ExecuteOperatorFeePeriodUpdated")
+      .withArgs(newPeriod);
+  });
+
+  it("allows any address to update liquidation threshold period", async function () {
+    const [attacker] = await ethers.getSigners();
+    const Dao = await ethers.getContractFactory("SSVDAO");
+    const dao = await Dao.deploy();
+    const newThreshold = 100_800; // minimum allowed
+    await expect(dao.connect(attacker).updateLiquidationThresholdPeriod(newThreshold))
+      .to.emit(dao, "LiquidationThresholdPeriodUpdated")
+      .withArgs(newThreshold);
+  });
+
+  it("allows any address to update minimum liquidation collateral", async function () {
+    const [attacker] = await ethers.getSigners();
+    const Dao = await ethers.getContractFactory("SSVDAO");
+    const dao = await Dao.deploy();
+    const amount = ethers.parseEther("1");
+    await expect(dao.connect(attacker).updateMinimumLiquidationCollateral(amount))
+      .to.emit(dao, "MinimumLiquidationCollateralUpdated")
+      .withArgs(amount);
+  });
+
 });
