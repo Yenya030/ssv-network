@@ -102,3 +102,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/ssvdao-access-control.ts`
   - *Result*: Any address can call `updateOperatorFeeIncreaseLimit` to alter `operatorMaxFeeIncrease`.
+
+## Reentrancy on DAO Earnings Withdrawal
+- **Severity**: Medium
+- **Test File**: `test/security/reentrancy.ts`
+- **Result**: No reentrancy observed; state updates precede token transfer, preventing double withdrawals.
