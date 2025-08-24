@@ -45,6 +45,7 @@ This document tracks security vectors analyzed in the repository.
 | Unauthorized withdrawal of DAO earnings via SSVDAO | High | Vulnerable | `SSVDAO.withdrawNetworkEarnings` lets any caller pull funds if DAO balance is set. |
 | Unauthorized withdrawal of network earnings by non-owner | High | Managed | `SSVNetwork.withdrawNetworkEarnings` restricted by `onlyOwner` and tested in `network-fee-withdraw.ts` |
 | Unauthorized modification of operator privacy status | Medium | Managed | `setOperatorsPrivateUnchecked`/`setOperatorsPublicUnchecked` verify operator ownership; non-owners revert |
+| Unauthorized modification of operator whitelist | Medium | Managed | Non-owners calling `setOperatorsWhitelists` revert with `CallerNotOwnerWithData` (`test/operators/whitelist.ts`) |
 | Unauthorized withdrawal of DAO earnings via `SSVDAO.withdrawNetworkEarnings` | Critical | Vulnerable | Missing access control allows any address to drain DAO funds. |
 | Unauthorized updates to DAO parameters (operator fee limits, periods, liquidation thresholds) | High | Vulnerable | `SSVDAO` parameter update functions lack access control, enabling arbitrary configuration changes. |
 | Date | Vector | Severity | Result |
