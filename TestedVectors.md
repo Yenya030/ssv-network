@@ -1,5 +1,8 @@
 
 
+
+
+
 # Tested Attack Vectors
 
 This document tracks security vectors analyzed in the repository.
@@ -44,5 +47,17 @@ This document tracks security vectors analyzed in the repository.
 |-------|----------|--------|-------|
 | Unauthorized update of network fee through SSVDAO module | High | Vulnerable | `SSVDAO.updateNetworkFee` lacks access control allowing any caller to change the fee. |
 | Unauthorized minting of SSV token | Medium | Mitigated | `SSVToken.mint` is restricted to owner; non-owners revert. |
+| Unauthorized withdrawal of DAO earnings via SSVDAO | High | Vulnerable | `SSVDAO.withdrawNetworkEarnings` lets any caller pull funds if DAO balance is set. |
+| Unauthorized withdrawal of network earnings by non-owner | High | Managed | `SSVNetwork.withdrawNetworkEarnings` restricted by `onlyOwner` and tested in `network-fee-withdraw.ts` |
+| Unauthorized modification of operator privacy status | Medium | Managed | `setOperatorsPrivateUnchecked`/`setOperatorsPublicUnchecked` verify operator ownership; non-owners revert |
 | Unauthorized withdrawal of DAO earnings via `SSVDAO.withdrawNetworkEarnings` | Critical | Vulnerable | Missing access control allows any address to drain DAO funds. |
 | Unauthorized updates to DAO parameters (operator fee limits, periods, liquidation thresholds) | High | Vulnerable | `SSVDAO` parameter update functions lack access control, enabling arbitrary configuration changes. |
+| Date | Vector | Severity | Result |
+|------|--------|----------|--------|
+| 2025-08-23 | Unauthorized update of maximum operator fee via SSVDAO | High | Vulnerable: any address can change `operatorMaxFee` |
+
+- **Unauthorized Maximum Operator Fee Update**
+  - *Severity*: High (access control)
+  - *Test File*: `test/security/ssvdao-access-control.ts`
+  - *Result*: Any address can invoke `updateMaximumOperatorFee` to alter `operatorMaxFee`.
+
