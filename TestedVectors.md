@@ -44,3 +44,5 @@ This document tracks security vectors analyzed in the repository.
 |-------|----------|--------|-------|
 | Unauthorized update of network fee through SSVDAO module | High | Vulnerable | `SSVDAO.updateNetworkFee` lacks access control allowing any caller to change the fee. |
 | Unauthorized minting of SSV token | Medium | Mitigated | `SSVToken.mint` is restricted to owner; non-owners revert. |
+| Unauthorized withdrawal of network earnings by non-owner | High | Managed | `SSVNetwork.withdrawNetworkEarnings` restricted by `onlyOwner` and tested in `network-fee-withdraw.ts` |
+| Unauthorized modification of operator privacy status | Medium | Managed | `setOperatorsPrivateUnchecked`/`setOperatorsPublicUnchecked` verify operator ownership; non-owners revert |
