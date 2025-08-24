@@ -87,3 +87,8 @@ This document tracks security vectors analyzed in the repository.
   - *Test File*: `test/security/cluster-deposit-reentrancy.ts`
   - *Result*: Deposit resisted token-triggered reentrancy; operator earnings unchanged.
 
+
+- **Unauthorized Initialization of SSVNetwork**
+  - *Severity*: Critical (access control)
+  - *Test File*: `test/security/uninitialized-ownership.ts`
+  - *Result*: Uninitialized proxy can be claimed by any caller, who becomes owner and gains upgrade control.
