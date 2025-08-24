@@ -82,3 +82,8 @@ This document tracks security vectors analyzed in the repository.
   - *Test File*: `test/security/ssvdao-access-control.ts`
   - *Result*: Any address can call `updateMinimumLiquidationCollateral` to change `minimumLiquidationCollateral`.
 
+- **Cluster Deposit Reentrancy**
+  - *Severity*: Medium (reentrancy)
+  - *Test File*: `test/security/cluster-deposit-reentrancy.ts`
+  - *Result*: Deposit resisted token-triggered reentrancy; operator earnings unchanged.
+
