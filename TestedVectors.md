@@ -87,3 +87,9 @@ This document tracks security vectors analyzed in the repository.
   - *Test File*: `test/security/cluster-deposit-reentrancy.ts`
   - *Result*: Deposit resisted token-triggered reentrancy; operator earnings unchanged.
 
+
+- **Cluster Reactivation Reentrancy**
+  - *Severity*: Medium (reentrancy)
+  - *Test File*: `test/security/reactivate-reentrancy.ts`
+  - *Result*: No reentrancy observed; operator earnings remain unchanged after reactivation.
+
