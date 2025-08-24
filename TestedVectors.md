@@ -112,3 +112,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (access control)
   - *Test File*: `test/security/operator-whitelisting-contract-access.ts`
   - *Result*: Non-owners attempting to set a whitelisting contract revert with `CallerNotOwnerWithData`; owner succeeds.
+
+**Cluster Reactivation Reentrancy**
+  - *Severity*: Medium (reentrancy)
+  - *Test File*: `test/security/reactivate-reentrancy.ts`
+  - *Result*: No reentrancy observed; operator earnings remain unchanged after reactivation.
