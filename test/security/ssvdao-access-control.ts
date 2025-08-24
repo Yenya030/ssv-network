@@ -26,4 +26,15 @@ describe("SSVDAO module access control", function () {
     const token = await Token.deploy();
     await expect(token.connect(attacker).mint(attacker.address, 1)).to.be.revertedWith("Ownable: caller is not the owner");
   });
+
+  it("allows any address to update operator fee increase limit", async function () {
+    const [attacker] = await ethers.getSigners();
+    const Dao = await ethers.getContractFactory("SSVDAO");
+    const dao = await Dao.deploy();
+    const newLimit = 5;
+    await expect(dao.connect(attacker).updateOperatorFeeIncreaseLimit(newLimit))
+      .to.emit(dao, "OperatorFeeIncreaseLimitUpdated")
+      .withArgs(newLimit);
+  });
+
 });
