@@ -61,3 +61,8 @@ This document tracks security vectors analyzed in the repository.
   - *Test File*: `test/security/ssvdao-access-control.ts`
   - *Result*: Any address can invoke `updateMaximumOperatorFee` to alter `operatorMaxFee`.
 
+- **Cluster Deposit Reentrancy**
+  - *Severity*: Medium (reentrancy)
+  - *Test File*: `test/security/cluster-deposit-reentrancy.ts`
+  - *Result*: Deposit resisted token-triggered reentrancy; operator earnings unchanged.
+
