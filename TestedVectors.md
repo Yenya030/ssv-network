@@ -61,3 +61,23 @@ This document tracks security vectors analyzed in the repository.
   - *Test File*: `test/security/ssvdao-access-control.ts`
   - *Result*: Any address can invoke `updateMaximumOperatorFee` to alter `operatorMaxFee`.
 
+- **Unauthorized Declare Operator Fee Period Update**
+  - *Severity*: High (access control)
+  - *Test File*: `test/security/ssvdao-access-control.ts`
+  - *Result*: Any address can call `updateDeclareOperatorFeePeriod` to change `declareOperatorFeePeriod`.
+
+- **Unauthorized Execute Operator Fee Period Update**
+  - *Severity*: High (access control)
+  - *Test File*: `test/security/ssvdao-access-control.ts`
+  - *Result*: Any address can call `updateExecuteOperatorFeePeriod` to change `executeOperatorFeePeriod`.
+
+- **Unauthorized Liquidation Threshold Period Update**
+  - *Severity*: High (access control)
+  - *Test File*: `test/security/ssvdao-access-control.ts`
+  - *Result*: Any address can call `updateLiquidationThresholdPeriod` to change `minimumBlocksBeforeLiquidation`.
+
+- **Unauthorized Minimum Liquidation Collateral Update**
+  - *Severity*: High (access control)
+  - *Test File*: `test/security/ssvdao-access-control.ts`
+  - *Result*: Any address can call `updateMinimumLiquidationCollateral` to change `minimumLiquidationCollateral`.
+
