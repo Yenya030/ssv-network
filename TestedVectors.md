@@ -87,3 +87,8 @@ This document tracks security vectors analyzed in the repository.
   - *Test File*: `test/security/cluster-deposit-reentrancy.ts`
   - *Result*: Deposit resisted token-triggered reentrancy; operator earnings unchanged.
 
+
+## Reentrancy on DAO Earnings Withdrawal
+- **Severity**: Medium
+- **Test File**: `test/security/reentrancy.ts`
+- **Result**: No reentrancy observed; state updates precede token transfer, preventing double withdrawals.
