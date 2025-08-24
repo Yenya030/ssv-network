@@ -1,8 +1,3 @@
-
-
-
-
-
 # Tested Attack Vectors
 
 This document tracks security vectors analyzed in the repository.
@@ -60,13 +55,9 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/ssvdao-access-control.ts`
   - *Result*: Any address can invoke `updateMaximumOperatorFee` to alter `operatorMaxFee`.
+ 
+## Reentrancy on Operator Earnings Withdrawal
+- **Severity**: Medium
+- **Test File**: `test/security/operator-earnings-reentrancy.ts`
+- **Result**: No reentrancy observed; state updates precede token transfer, preventing double withdrawals.
 
-
-| Date | Vector | Severity | Result |
-|------|--------|----------|--------|
-| 2025-08-24 | Reentrancy during cluster deposit via malicious token | Medium | Mitigated: operator earnings unchanged during reentrant deposit |
-
-## Reentrancy on Deposit
-- **Objective**: Ensure depositing tokens cannot trigger reentrancy that drains operator earnings.
-- **Approach**: Added `test/security/deposit-reentrancy.ts` using `ReentrantToken` to reenter `withdrawAllOperatorEarnings` during deposit and ran full test suite.
-- **Result**: Operator earnings remained constant; deposit function resists reentrancy.
