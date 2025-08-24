@@ -44,3 +44,5 @@ This document tracks security vectors analyzed in the repository.
 |-------|----------|--------|-------|
 | Unauthorized update of network fee through SSVDAO module | High | Vulnerable | `SSVDAO.updateNetworkFee` lacks access control allowing any caller to change the fee. |
 | Unauthorized minting of SSV token | Medium | Mitigated | `SSVToken.mint` is restricted to owner; non-owners revert. |
+| Unauthorized withdrawal of DAO earnings via `SSVDAO.withdrawNetworkEarnings` | Critical | Vulnerable | Missing access control allows any address to drain DAO funds. |
+| Unauthorized updates to DAO parameters (operator fee limits, periods, liquidation thresholds) | High | Vulnerable | `SSVDAO` parameter update functions lack access control, enabling arbitrary configuration changes. |
