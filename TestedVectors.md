@@ -1,8 +1,3 @@
-
-
-
-
-
 # Tested Attack Vectors
 
 This document tracks security vectors analyzed in the repository.
@@ -65,3 +60,4 @@ This document tracks security vectors analyzed in the repository.
 - **Severity**: Medium
 - **Test File**: `test/security/operator-earnings-reentrancy.ts`
 - **Result**: No reentrancy observed; state updates precede token transfer, preventing double withdrawals.
+
