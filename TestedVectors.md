@@ -87,3 +87,7 @@ This document tracks security vectors analyzed in the repository.
   - *Test File*: `test/security/cluster-deposit-reentrancy.ts`
   - *Result*: Deposit resisted token-triggered reentrancy; operator earnings unchanged.
 
+- **Unauthorized Operator Whitelisting Contract Update**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/security/operator-whitelisting-contract-access.ts`
+  - *Result*: Non-owners attempting to set a whitelisting contract revert with `CallerNotOwnerWithData`; owner succeeds.
