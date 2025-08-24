@@ -82,11 +82,26 @@ This document tracks security vectors analyzed in the repository.
   - *Test File*: `test/security/ssvdao-access-control.ts`
   - *Result*: Any address can call `updateMinimumLiquidationCollateral` to change `minimumLiquidationCollateral`.
 
+- **Unauthorized Operator Fee Increase Limit Update**
+  - *Severity*: High (access control)
+  - *Test File*: `test/security/ssvdao-access-control.ts`
+  - *Result*: Any address can call `updateOperatorFeeIncreaseLimit` to modify `operatorMaxFeeIncrease`.
+
 - **Cluster Deposit Reentrancy**
   - *Severity*: Medium (reentrancy)
   - *Test File*: `test/security/cluster-deposit-reentrancy.ts`
   - *Result*: Deposit resisted token-triggered reentrancy; operator earnings unchanged.
 
+
+- **Unauthorized Initialization of SSVNetwork**
+  - *Severity*: Critical (access control)
+  - *Test File*: `test/security/uninitialized-ownership.ts`
+  - *Result*: Uninitialized proxy can be claimed by any caller, who becomes owner and gains upgrade control.
+
+**Unauthorized Operator Fee Increase Limit Update**
+  - *Severity*: High (access control)
+  - *Test File*: `test/security/ssvdao-access-control.ts`
+  - *Result*: Any address can call `updateOperatorFeeIncreaseLimit` to alter `operatorMaxFeeIncrease`.
 
 ## Reentrancy on DAO Earnings Withdrawal
 - **Severity**: Medium
