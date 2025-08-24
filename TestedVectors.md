@@ -117,3 +117,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (reentrancy)
   - *Test File*: `test/security/reactivate-reentrancy.ts`
   - *Result*: No reentrancy observed; operator earnings remain unchanged after reactivation.
+
+**Unauthorized Operator Whitelisting Contract Update**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/operators/whitelist.ts`
+  - *Result*: Non-owners calling `setOperatorsWhitelistingContract` or `removeOperatorsWhitelistingContract` revert with `CallerNotOwnerWithData`; vector managed.
