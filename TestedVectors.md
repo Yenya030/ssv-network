@@ -107,3 +107,8 @@ This document tracks security vectors analyzed in the repository.
 - **Severity**: Medium
 - **Test File**: `test/security/reentrancy.ts`
 - **Result**: No reentrancy observed; state updates precede token transfer, preventing double withdrawals.
+
+ **Unauthorized Operator Whitelisting Contract Update**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/security/operator-whitelisting-contract-access.ts`
+  - *Result*: Non-owners attempting to set a whitelisting contract revert with `CallerNotOwnerWithData`; owner succeeds.
