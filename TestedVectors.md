@@ -122,3 +122,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (access control)
   - *Test File*: `test/operators/whitelist.ts`
   - *Result*: Non-owners calling `setOperatorsWhitelistingContract` or `removeOperatorsWhitelistingContract` revert with `CallerNotOwnerWithData`; vector managed.
+
+**Unauthorized Operator Fee Increase Limit Update**
+  - *Severity*: High (access control)
+  - *Test File*: `test/security/ssvdao-access-control.ts`
+  - *Result*: Any address can call `updateOperatorFeeIncreaseLimit` to change `operatorMaxFeeIncrease`.
