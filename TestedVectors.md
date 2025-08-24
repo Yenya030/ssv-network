@@ -60,4 +60,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/ssvdao-access-control.ts`
   - *Result*: Any address can invoke `updateMaximumOperatorFee` to alter `operatorMaxFee`.
-
+ 
+## Reentrancy on Operator Earnings Withdrawal
+- **Severity**: Medium
+- **Test File**: `test/security/operator-earnings-reentrancy.ts`
+- **Result**: No reentrancy observed; state updates precede token transfer, preventing double withdrawals.
