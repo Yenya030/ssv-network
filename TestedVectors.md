@@ -127,3 +127,7 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/ssvdao-access-control.ts`
   - *Result*: Any address can call `updateOperatorFeeIncreaseLimit` to change `operatorMaxFeeIncrease`.
+**Zero-Amount DAO Earnings Withdrawal**
+- *Severity*: Medium (accounting manipulation)
+- *Test File*: `test/security/ssvdao-zero-withdraw.ts`
+- *Result*: Attacker calling `withdrawNetworkEarnings(0)` emits event but does not transfer funds or alter `daoBalance`; vector managed.
