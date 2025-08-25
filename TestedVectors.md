@@ -127,3 +127,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/ssvdao-access-control.ts`
   - *Result*: Any address can call `updateOperatorFeeIncreaseLimit` to change `operatorMaxFeeIncrease`.
+
+- **Cluster Owner Self-Liquidation Bypass**
+  - *Severity*: High (access control)
+  - *Test File*: `test/security/cluster-self-liquidation.ts`
+  - *Result*: Cluster owners can liquidate healthy clusters and withdraw all funds due to missing ownership check in `SSVClusters.liquidate`.
