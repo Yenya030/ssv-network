@@ -156,3 +156,13 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (access control)
   - *Test File*: `test/operators/remove.ts`
   - *Result*: Non-owner attempts revert with `CallerNotOwnerWithData`; vector managed.
+
+**Unauthorized SSVNetworkViews Initialization**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/security/uninitialized-views-ownership.ts`
+  - *Result*: Any address can initialize the SSVNetworkViews proxy and become owner.
+
+- **Unauthorized initializev2 Execution After Upgrade**
+  - *Severity*: High (access control)
+  - *Test File*: `test/security/upgrade-initializev2.ts`
+  - *Result*: After upgrading, any address can call `initializev2` to change `validatorsPerOperatorLimit`.
