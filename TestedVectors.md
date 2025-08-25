@@ -151,3 +151,8 @@ This document tracks security vectors analyzed in the repository.
 - *Severity*: Medium (accounting manipulation)
 - *Test File*: `test/security/ssvdao-zero-withdraw.ts`
 - *Result*: Attacker calling `withdrawNetworkEarnings(0)` emits event but does not transfer funds or alter `daoBalance`; vector managed.
+
+**Unauthorized Operator Removal**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/operators/remove.ts`
+  - *Result*: Non-owner attempts revert with `CallerNotOwnerWithData`; vector managed.
