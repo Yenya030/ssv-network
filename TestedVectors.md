@@ -146,3 +146,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/cluster-self-liquidation.ts`
   - *Result*: Cluster owners can liquidate healthy clusters and withdraw all funds due to missing ownership check in `SSVClusters.liquidate`.
+
+**Zero-Amount DAO Earnings Withdrawal**
+- *Severity*: Medium (accounting manipulation)
+- *Test File*: `test/security/ssvdao-zero-withdraw.ts`
+- *Result*: Attacker calling `withdrawNetworkEarnings(0)` emits event but does not transfer funds or alter `daoBalance`; vector managed.
