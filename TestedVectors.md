@@ -127,3 +127,7 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/ssvdao-access-control.ts`
   - *Result*: Any address can call `updateOperatorFeeIncreaseLimit` to change `operatorMaxFeeIncrease`.
+- **Unauthorized Initialization of SSVNetworkViews**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/security/uninitialized-views-ownership.ts`
+  - *Result*: Uninitialized `SSVNetworkViews` proxy can be initialized by any caller, granting ownership.
