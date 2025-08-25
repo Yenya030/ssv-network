@@ -127,7 +127,32 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/ssvdao-access-control.ts`
   - *Result*: Any address can call `updateOperatorFeeIncreaseLimit` to change `operatorMaxFeeIncrease`.
-- **Unauthorized Operator Removal**
+**Unauthorized Initialization of SSVNetworkViews**
+  - *Severity*: Critical (access control)
+  - *Test File*: `test/security/uninitialized-views-ownership.ts`
+  - *Result*: Uninitialized proxy can be initialized by any address, granting ownership and upgrade rights.
+
+**Operator Removal Reentrancy**
+  - *Severity*: Medium (reentrancy)
+  - *Test File*: `test/security/remove-operator-reentrancy.ts`
+  - *Result*: No reentrancy observed; state updates occur before token transfer, preventing double withdrawals.
+
+ **Unauthorized Initialization of SSVNetworkViews**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/security/uninitialized-views.ts`
+  - *Result*: Uninitialized proxy can be initialized by any account, granting ownership.
+
+**Cluster Owner Self-Liquidation Bypass**
+  - *Severity*: High (access control)
+  - *Test File*: `test/security/cluster-self-liquidation.ts`
+  - *Result*: Cluster owners can liquidate healthy clusters and withdraw all funds due to missing ownership check in `SSVClusters.liquidate`.
+
+**Zero-Amount DAO Earnings Withdrawal**
+- *Severity*: Medium (accounting manipulation)
+- *Test File*: `test/security/ssvdao-zero-withdraw.ts`
+- *Result*: Attacker calling `withdrawNetworkEarnings(0)` emits event but does not transfer funds or alter `daoBalance`; vector managed.
+
+**Unauthorized Operator Removal**
   - *Severity*: Medium (access control)
   - *Test File*: `test/operators/remove.ts`
   - *Result*: Non-owner attempts revert with `CallerNotOwnerWithData`; vector managed.
