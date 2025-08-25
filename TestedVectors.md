@@ -141,3 +141,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (access control)
   - *Test File*: `test/security/uninitialized-views.ts`
   - *Result*: Uninitialized proxy can be initialized by any account, granting ownership.
+
+**Cluster Owner Self-Liquidation Bypass**
+  - *Severity*: High (access control)
+  - *Test File*: `test/security/cluster-self-liquidation.ts`
+  - *Result*: Cluster owners can liquidate healthy clusters and withdraw all funds due to missing ownership check in `SSVClusters.liquidate`.
