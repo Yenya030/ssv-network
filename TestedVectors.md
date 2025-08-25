@@ -127,3 +127,7 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/ssvdao-access-control.ts`
   - *Result*: Any address can call `updateOperatorFeeIncreaseLimit` to change `operatorMaxFeeIncrease`.
+- **Unauthorized Operator Removal**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/operators/remove.ts`
+  - *Result*: Non-owner attempts revert with `CallerNotOwnerWithData`; vector managed.
