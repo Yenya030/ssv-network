@@ -127,3 +127,7 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/ssvdao-access-control.ts`
   - *Result*: Any address can call `updateOperatorFeeIncreaseLimit` to change `operatorMaxFeeIncrease`.
+**Unauthorized validators-per-operator limit update via reinitializer**
+  - *Severity*: High (access control)
+  - *Test File*: `test/security/validators-per-operator-initialize.ts`
+  - *Result*: Any address can call `initializev2` to change `validatorsPerOperatorLimit`.
