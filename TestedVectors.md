@@ -136,3 +136,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (reentrancy)
   - *Test File*: `test/security/remove-operator-reentrancy.ts`
   - *Result*: No reentrancy observed; state updates occur before token transfer, preventing double withdrawals.
+
+ **Unauthorized Initialization of SSVNetworkViews**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/security/uninitialized-views.ts`
+  - *Result*: Uninitialized proxy can be initialized by any account, granting ownership.
