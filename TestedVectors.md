@@ -166,6 +166,31 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/upgrade-initializev2.ts`
   - *Result*: After upgrading, any address can call `initializev2` to change `validatorsPerOperatorLimit`.
+**Cluster Liquidation Reentrancy**
+  - *Severity*: Medium (reentrancy)
+  - *Test File*: `test/security/liquidate-reentrancy.ts`
+  - *Result*: No reentrancy observed; liquidation transfers funds once and updates state before token transfer.
+
+**Unauthorized Validator Exit**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/security/validator-exit-access.ts`
+  - *Result*: Non-owner attempts to exit validators revert with `IncorrectValidatorStateWithData`.
+
+**Non-Compliant ERC20 Deposit**
+- *Severity*: Medium (token handling)
+- *Test File*: `test/security/non-compliant-token.ts`
+- *Result*: Deposit attempts with tokens returning false revert with `TokenTransferFailed`, preventing inconsistent state.
+
+**Zero-Amount Operator Earnings Withdrawal**
+ - *Severity*: Medium (accounting manipulation)
+ - *Test File*: `test/security/operator-zero-withdraw.ts`
+ - *Result*: Calling `withdrawOperatorEarnings(0)` by the operator owner withdraws all earnings, while non-owners revert with `CallerNotOwnerWithData`; vector managed.
+
+**Zero Address Operator Whitelisting**
+ - *Severity*: Medium (input validation)
+ - *Test File*: `test/security/zero-address-whitelist.ts`
+ - *Result*: Attempting to whitelist address(0) reverts with `ZeroAddressNotAllowed`, indicating the vector is managed.
+
 **Silent delegatecall failure on empty revert data**
   - *Severity*: High (error handling)
   - *Test File*: `test/security/delegatecall-empty-revert.ts`
