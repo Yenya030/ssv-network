@@ -166,3 +166,7 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/upgrade-initializev2.ts`
   - *Result*: After upgrading, any address can call `initializev2` to change `validatorsPerOperatorLimit`.
+**Silent delegatecall failure on empty revert data**
+  - *Severity*: High (error handling)
+  - *Test File*: `test/security/delegatecall-empty-revert.ts`
+  - *Result*: Delegatecall to module reverting with no data does not bubble the revert, allowing execution to proceed.
