@@ -166,6 +166,11 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/upgrade-initializev2.ts`
   - *Result*: After upgrading, any address can call `initializev2` to change `validatorsPerOperatorLimit`.
+**Cluster Liquidation Reentrancy**
+  - *Severity*: Medium (reentrancy)
+  - *Test File*: `test/security/liquidate-reentrancy.ts`
+  - *Result*: No reentrancy observed; liquidation transfers funds once and updates state before token transfer.
+
 **Unauthorized Validator Exit**
   - *Severity*: Medium (access control)
   - *Test File*: `test/security/validator-exit-access.ts`
