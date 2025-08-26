@@ -32,5 +32,23 @@ describe('Security: operator whitelisting contract access control', () => {
       })
     ).to.not.be.rejected;
   });
+
+  it('non-owner cannot remove whitelisting contract', async () => {
+    await ssvNetwork.write.setOperatorsWhitelistingContract([[1], await mockWhitelistingContract.address], {
+      account: owners[1].account,
+    });
+    await expect(
+      ssvNetwork.write.removeOperatorsWhitelistingContract([[1]], { account: owners[2].account })
+    ).to.be.rejectedWith('CallerNotOwnerWithData');
+  });
+
+  it('operator owner can remove whitelisting contract', async () => {
+    await ssvNetwork.write.setOperatorsWhitelistingContract([[1], await mockWhitelistingContract.address], {
+      account: owners[1].account,
+    });
+    await expect(
+      ssvNetwork.write.removeOperatorsWhitelistingContract([[1]], { account: owners[1].account })
+    ).to.not.be.rejected;
+  });
 });
 

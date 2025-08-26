@@ -166,3 +166,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/upgrade-initializev2.ts`
   - *Result*: After upgrading, any address can call `initializev2` to change `validatorsPerOperatorLimit`.
+
+**Unauthorized Whitelisting Contract Removal**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/security/operator-whitelisting-contract-access.ts`
+  - *Result*: Non-owner attempts to remove operator whitelisting contract revert with `CallerNotOwnerWithData`; vector managed.
