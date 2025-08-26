@@ -180,3 +180,8 @@ This document tracks security vectors analyzed in the repository.
 - *Severity*: Medium (token handling)
 - *Test File*: `test/security/non-compliant-token.ts`
 - *Result*: Deposit attempts with tokens returning false revert with `TokenTransferFailed`, preventing inconsistent state.
+
+**Zero-Amount Operator Earnings Withdrawal**
+ - *Severity*: Medium (accounting manipulation)
+ - *Test File*: `test/security/operator-zero-withdraw.ts`
+ - *Result*: Calling `withdrawOperatorEarnings(0)` by the operator owner withdraws all earnings, while non-owners revert with `CallerNotOwnerWithData`; vector managed.
