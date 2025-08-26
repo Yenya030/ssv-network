@@ -170,3 +170,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (reentrancy)
   - *Test File*: `test/security/liquidate-reentrancy.ts`
   - *Result*: No reentrancy observed; liquidation transfers funds once and updates state before token transfer.
+
+**Unauthorized Validator Exit**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/security/validator-exit-access.ts`
+  - *Result*: Non-owner attempts to exit validators revert with `IncorrectValidatorStateWithData`.
