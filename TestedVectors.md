@@ -166,3 +166,7 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/upgrade-initializev2.ts`
   - *Result*: After upgrading, any address can call `initializev2` to change `validatorsPerOperatorLimit`.
+**Zero-Amount Operator Earnings Withdrawal**
+ - *Severity*: Medium (accounting manipulation)
+ - *Test File*: `test/security/operator-zero-withdraw.ts`
+ - *Result*: Calling `withdrawOperatorEarnings(0)` by the operator owner withdraws all earnings, while non-owners revert with `CallerNotOwnerWithData`; vector managed.
