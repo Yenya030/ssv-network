@@ -166,3 +166,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/upgrade-initializev2.ts`
   - *Result*: After upgrading, any address can call `initializev2` to change `validatorsPerOperatorLimit`.
+**Zero Address Operator Whitelisting**
+ - *Severity*: Medium (input validation)
+ - *Test File*: `test/security/zero-address-whitelist.ts`
+ - *Result*: Attempting to whitelist address(0) reverts with `ZeroAddressNotAllowed`, indicating the vector is managed.
+
