@@ -195,3 +195,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (error handling)
   - *Test File*: `test/security/delegatecall-empty-revert.ts`
   - *Result*: Delegatecall to module reverting with no data does not bubble the revert, allowing execution to proceed.
+
+**Unauthorized Whitelisting Contract Removal**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/security/operator-whitelisting-contract-access.ts`
+  - *Result*: Non-owner attempts to remove operator whitelisting contract revert with `CallerNotOwnerWithData`; vector managed.
