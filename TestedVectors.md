@@ -166,3 +166,7 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/upgrade-initializev2.ts`
   - *Result*: After upgrading, any address can call `initializev2` to change `validatorsPerOperatorLimit`.
+**Non-Compliant ERC20 Deposit**
+- *Severity*: Medium (token handling)
+- *Test File*: `test/security/non-compliant-token.ts`
+- *Result*: Deposit attempts with tokens returning false revert with `TokenTransferFailed`, preventing inconsistent state.
