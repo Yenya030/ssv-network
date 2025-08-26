@@ -166,3 +166,7 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/upgrade-initializev2.ts`
   - *Result*: After upgrading, any address can call `initializev2` to change `validatorsPerOperatorLimit`.
+**Network Earnings Overflow via Excessive Network Fee**
+  - *Severity*: High (arithmetic overflow)
+  - *Test File*: `test/security/ssvdao-overflow.ts`
+  - *Result*: With >1 validator, setting `networkFee` to `2^64-1` causes `withdrawNetworkEarnings` to revert with panic 0x11 due to overflow, halting earnings withdrawals.
