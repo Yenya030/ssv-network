@@ -185,3 +185,8 @@ This document tracks security vectors analyzed in the repository.
  - *Severity*: Medium (accounting manipulation)
  - *Test File*: `test/security/operator-zero-withdraw.ts`
  - *Result*: Calling `withdrawOperatorEarnings(0)` by the operator owner withdraws all earnings, while non-owners revert with `CallerNotOwnerWithData`; vector managed.
+
+**Zero Address Operator Whitelisting**
+ - *Severity*: Medium (input validation)
+ - *Test File*: `test/security/zero-address-whitelist.ts`
+ - *Result*: Attempting to whitelist address(0) reverts with `ZeroAddressNotAllowed`, indicating the vector is managed.
