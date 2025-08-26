@@ -175,3 +175,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (access control)
   - *Test File*: `test/security/validator-exit-access.ts`
   - *Result*: Non-owner attempts to exit validators revert with `IncorrectValidatorStateWithData`.
+
+**Non-Compliant ERC20 Deposit**
+- *Severity*: Medium (token handling)
+- *Test File*: `test/security/non-compliant-token.ts`
+- *Result*: Deposit attempts with tokens returning false revert with `TokenTransferFailed`, preventing inconsistent state.
