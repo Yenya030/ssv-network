@@ -190,3 +190,8 @@ This document tracks security vectors analyzed in the repository.
  - *Severity*: Medium (input validation)
  - *Test File*: `test/security/zero-address-whitelist.ts`
  - *Result*: Attempting to whitelist address(0) reverts with `ZeroAddressNotAllowed`, indicating the vector is managed.
+
+**Silent delegatecall failure on empty revert data**
+  - *Severity*: High (error handling)
+  - *Test File*: `test/security/delegatecall-empty-revert.ts`
+  - *Result*: Delegatecall to module reverting with no data does not bubble the revert, allowing execution to proceed.
