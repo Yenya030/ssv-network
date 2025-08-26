@@ -166,3 +166,7 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: High (access control)
   - *Test File*: `test/security/upgrade-initializev2.ts`
   - *Result*: After upgrading, any address can call `initializev2` to change `validatorsPerOperatorLimit`.
+**Unauthorized Validator Exit**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/security/validator-exit-access.ts`
+  - *Result*: Non-owner attempts to exit validators revert with `IncorrectValidatorStateWithData`.
