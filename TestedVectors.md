@@ -245,4 +245,3 @@ This document tracks security vectors analyzed in the repository.
  - *Severity*: Medium (input validation)
  - *Test File*: `test/security/remove-whitelisting-contract-duplicates.ts`
  - *Result*: `removeOperatorsWhitelistingContract` accepts unsorted or duplicate operator IDs; function succeeds without state corruption, indicating vector is managed.
-
