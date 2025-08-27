@@ -1,5 +1,6 @@
 
 
+
 # Tested Attack Vectors
 
 This document tracks security vectors analyzed in the repository.
@@ -221,3 +222,9 @@ This document tracks security vectors analyzed in the repository.
  - *Severity*: Medium (reentrancy)
  - *Test File*: `test/security/register-validator-reentrancy.ts`
  - *Result*: Token-triggered reentrancy during `registerValidator` does not reduce operator earnings; state changes occur safely before token transfer.
+
+
+**Unauthorized Operator Fee Reduction**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/security/operator-reduce-fee-access.ts`
+  - *Result*: Non-owner calls revert with `CallerNotOwnerWithData`; vector managed.
