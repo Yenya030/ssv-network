@@ -241,3 +241,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (input validation)
   - *Test File*: `test/security/whitelisting-contract-duplicates.ts`
   - *Result*: `setOperatorsWhitelistingContract` accepts unsorted or duplicate operator IDs; function succeeds without state corruption, indicating vector is managed.
+
+**Non-Compliant ERC20 Withdrawal**
+- *Severity*: Medium (token handling)
+- *Test File*: `test/security/non-compliant-withdraw.ts`
+- *Result*: `withdrawNetworkEarnings` reverts with 'TokenTransferFailed' when the token's `transfer` returns false, leaving balances unchanged.
