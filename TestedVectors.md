@@ -1,3 +1,4 @@
+
 # Tested Attack Vectors
 
 This document tracks security vectors analyzed in the repository.
@@ -204,3 +205,8 @@ This document tracks security vectors analyzed in the repository.
  - *Severity*: Medium (input validation)
  - *Test File*: `test/operators/whitelist.ts`
  - *Result*: Calling with an empty addresses array reverts with `InvalidWhitelistAddressesLength`; vector managed.
+
+**Whitelist Reentrancy via getWhitelistedOperators**
+ - *Severity*: Medium (reentrancy)
+ - *Test File*: `test/security/whitelist-reentrancy.ts`
+ - *Result*: Malicious whitelisting contract attempting to update network fee during `getWhitelistedOperators` call fails; network fee remains unchanged, indicating vector is managed.
