@@ -250,3 +250,8 @@ This document tracks security vectors analyzed in the repository.
  - *Severity*: Medium (availability)
  - *Test File*: `test/security/views-zero-address.ts`
  - *Result*: Initializing `SSVNetworkViews` with `address(0)` succeeds, and subsequent view calls revert, leaving the contract unusable.
+
+**Non-Compliant ERC20 Withdrawal**
+- *Severity*: Medium (token handling)
+- *Test File*: `test/security/non-compliant-withdraw.ts`
+- *Result*: `withdrawNetworkEarnings` reverts with 'TokenTransferFailed' when the token's `transfer` returns false, leaving balances unchanged.
