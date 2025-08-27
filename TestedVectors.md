@@ -200,3 +200,7 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (access control)
   - *Test File*: `test/security/operator-whitelisting-contract-access.ts`
   - *Result*: Non-owner attempts to remove operator whitelisting contract revert with `CallerNotOwnerWithData`; vector managed.
+- **Unsorted or Duplicate Operator IDs in Whitelisting Contract Update**
+  - *Severity*: Medium (input validation)
+  - *Test File*: `test/security/whitelisting-contract-duplicates.ts`
+  - *Result*: `setOperatorsWhitelistingContract` accepts unsorted or duplicate operator IDs; function succeeds without state corruption, indicating vector is managed.
