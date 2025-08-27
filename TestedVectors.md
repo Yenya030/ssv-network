@@ -1,6 +1,3 @@
-
-
-
 # Tested Attack Vectors
 
 This document tracks security vectors analyzed in the repository.
@@ -239,3 +236,8 @@ This document tracks security vectors analyzed in the repository.
  - *Severity*: Medium (resource exhaustion)
  - *Test File*: `test/security/free-operator-registration.ts`
  - *Result*: Operators can be registered with zero fee, allowing unlimited state growth without token deposit; vector vulnerable.
+
+**Unsorted or Duplicate Operator IDs in Whitelisting Contract Update**
+  - *Severity*: Medium (input validation)
+  - *Test File*: `test/security/whitelisting-contract-duplicates.ts`
+  - *Result*: `setOperatorsWhitelistingContract` accepts unsorted or duplicate operator IDs; function succeeds without state corruption, indicating vector is managed.
