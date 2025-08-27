@@ -200,3 +200,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (access control)
   - *Test File*: `test/security/operator-whitelisting-contract-access.ts`
   - *Result*: Non-owner attempts to remove operator whitelisting contract revert with `CallerNotOwnerWithData`; vector managed.
+**Whitelist Reentrancy via getWhitelistedOperators**
+ - *Severity*: Medium (reentrancy)
+ - *Test File*: `test/security/whitelist-reentrancy.ts`
+ - *Result*: Malicious whitelisting contract attempting to update network fee during `getWhitelistedOperators` call fails; network fee remains unchanged, indicating vector is managed.
+
