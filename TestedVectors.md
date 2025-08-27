@@ -241,3 +241,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (input validation)
   - *Test File*: `test/security/whitelisting-contract-duplicates.ts`
   - *Result*: `setOperatorsWhitelistingContract` accepts unsorted or duplicate operator IDs; function succeeds without state corruption, indicating vector is managed.
+- **Unsorted or duplicate operator IDs in bulk validator registration**
+  - *Severity*: Medium (input validation)
+  - *Test File*: `test/security/bulk-register-unsorted.ts`
+  - *Result*: Calls with unsorted or duplicate operator IDs revert with "UnsortedOperatorsList" or "OperatorsListNotUnique"; vector managed.
+
