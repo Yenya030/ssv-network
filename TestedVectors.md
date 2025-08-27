@@ -197,6 +197,12 @@ This document tracks security vectors analyzed in the repository.
   - *Result*: Delegatecall to module reverting with no data does not bubble the revert, allowing execution to proceed.
 
 **Unauthorized Whitelisting Contract Removal**
-  - *Severity*: Medium (access control)
-  - *Test File*: `test/security/operator-whitelisting-contract-access.ts`
-  - *Result*: Non-owner attempts to remove operator whitelisting contract revert with `CallerNotOwnerWithData`; vector managed.
+ - *Severity*: Medium (access control)
+ - *Test File*: `test/security/operator-whitelisting-contract-access.ts`
+ - *Result*: Non-owner attempts to remove operator whitelisting contract revert with `CallerNotOwnerWithData`; vector managed.
+
+## Operator Snapshot Overflow
+- **Date**: 2025-08-26
+- **Vector**: Arithmetic overflow in `OperatorLib.updateSnapshot` when operator fees are extremely large and a significant number of blocks pass between updates.
+- **Severity**: Medium
+- **Result**: Managed — network imposes a maximum operator fee cap, preventing overflow conditions. No exploit observed in tests.
