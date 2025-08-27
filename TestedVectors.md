@@ -216,3 +216,8 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (input validation)
   - *Test File*: `test/security/unsorted-whitelist.ts`
   - *Result*: `setOperatorsWhitelists` reverts with "UnsortedOperatorsList" when operator IDs are not sorted; vector managed.
+
+**Validator Registration Reentrancy**
+ - *Severity*: Medium (reentrancy)
+ - *Test File*: `test/security/register-validator-reentrancy.ts`
+ - *Result*: Token-triggered reentrancy during `registerValidator` does not reduce operator earnings; state changes occur safely before token transfer.
