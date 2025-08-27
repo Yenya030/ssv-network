@@ -200,3 +200,7 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (access control)
   - *Test File*: `test/security/operator-whitelisting-contract-access.ts`
   - *Result*: Non-owner attempts to remove operator whitelisting contract revert with `CallerNotOwnerWithData`; vector managed.
+**Free operator registration storage bloat**
+ - *Severity*: Medium (resource exhaustion)
+ - *Test File*: `test/security/free-operator-registration.ts`
+ - *Result*: Operators can be registered with zero fee, allowing unlimited state growth without token deposit; vector vulnerable.
