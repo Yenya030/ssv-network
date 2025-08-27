@@ -234,3 +234,8 @@ This document tracks security vectors analyzed in the repository.
 - **Vector**: Arithmetic overflow in `OperatorLib.updateSnapshot` when operator fees are extremely large and a significant number of blocks pass between updates.
 - **Severity**: Medium
 - **Result**: Managed — network imposes a maximum operator fee cap, preventing overflow conditions. No exploit observed in tests.
+
+**Free operator registration storage bloat**
+ - *Severity*: Medium (resource exhaustion)
+ - *Test File*: `test/security/free-operator-registration.ts`
+ - *Result*: Operators can be registered with zero fee, allowing unlimited state growth without token deposit; vector vulnerable.
