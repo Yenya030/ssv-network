@@ -200,3 +200,7 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (access control)
   - *Test File*: `test/security/operator-whitelisting-contract-access.ts`
   - *Result*: Non-owner attempts to remove operator whitelisting contract revert with `CallerNotOwnerWithData`; vector managed.
+**Unauthorized Operator Fee Reduction**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/security/operator-reduce-fee-access.ts`
+  - *Result*: Non-owner calls revert with `CallerNotOwnerWithData`; vector managed.
