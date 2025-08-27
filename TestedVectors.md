@@ -200,7 +200,44 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (access control)
   - *Test File*: `test/security/operator-whitelisting-contract-access.ts`
   - *Result*: Non-owner attempts to remove operator whitelisting contract revert with `CallerNotOwnerWithData`; vector managed.
-- **Unsorted or Duplicate Operator IDs in Whitelisting Contract Update**
+**Empty Whitelist Addresses in setOperatorsWhitelists**
+ - *Severity*: Medium (input validation)
+ - *Test File*: `test/operators/whitelist.ts`
+ - *Result*: Calling with an empty addresses array reverts with `InvalidWhitelistAddressesLength`; vector managed.
+
+**Whitelist Reentrancy via getWhitelistedOperators**
+ - *Severity*: Medium (reentrancy)
+ - *Test File*: `test/security/whitelist-reentrancy.ts`
+ - *Result*: Malicious whitelisting contract attempting to update network fee during `getWhitelistedOperators` call fails; network fee remains unchanged, indicating vector is managed.
+
+**Unsorted Operator IDs in Whitelist Update**
+  - *Severity*: Medium (input validation)
+  - *Test File*: `test/security/unsorted-whitelist.ts`
+  - *Result*: `setOperatorsWhitelists` reverts with "UnsortedOperatorsList" when operator IDs are not sorted; vector managed.
+
+**Validator Registration Reentrancy**
+ - *Severity*: Medium (reentrancy)
+ - *Test File*: `test/security/register-validator-reentrancy.ts`
+ - *Result*: Token-triggered reentrancy during `registerValidator` does not reduce operator earnings; state changes occur safely before token transfer.
+
+
+**Unauthorized Operator Fee Reduction**
+  - *Severity*: Medium (access control)
+  - *Test File*: `test/security/operator-reduce-fee-access.ts`
+  - *Result*: Non-owner calls revert with `CallerNotOwnerWithData`; vector managed.
+
+## Operator Snapshot Overflow
+- **Date**: 2025-08-26
+- **Vector**: Arithmetic overflow in `OperatorLib.updateSnapshot` when operator fees are extremely large and a significant number of blocks pass between updates.
+- **Severity**: Medium
+- **Result**: Managed — network imposes a maximum operator fee cap, preventing overflow conditions. No exploit observed in tests.
+
+**Free operator registration storage bloat**
+ - *Severity*: Medium (resource exhaustion)
+ - *Test File*: `test/security/free-operator-registration.ts`
+ - *Result*: Operators can be registered with zero fee, allowing unlimited state growth without token deposit; vector vulnerable.
+
+**Unsorted or Duplicate Operator IDs in Whitelisting Contract Update**
   - *Severity*: Medium (input validation)
   - *Test File*: `test/security/whitelisting-contract-duplicates.ts`
   - *Result*: `setOperatorsWhitelistingContract` accepts unsorted or duplicate operator IDs; function succeeds without state corruption, indicating vector is managed.
