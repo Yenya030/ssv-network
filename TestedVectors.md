@@ -241,3 +241,7 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (input validation)
   - *Test File*: `test/security/whitelisting-contract-duplicates.ts`
   - *Result*: `setOperatorsWhitelistingContract` accepts unsorted or duplicate operator IDs; function succeeds without state corruption, indicating vector is managed.
+**Zero Address Initialization of SSVNetworkViews**
+ - *Severity*: Medium (availability)
+ - *Test File*: `test/security/views-zero-address.ts`
+ - *Result*: Initializing `SSVNetworkViews` with `address(0)` succeeds, and subsequent view calls revert, leaving the contract unusable.
