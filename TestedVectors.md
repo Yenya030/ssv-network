@@ -200,3 +200,7 @@ This document tracks security vectors analyzed in the repository.
   - *Severity*: Medium (access control)
   - *Test File*: `test/security/operator-whitelisting-contract-access.ts`
   - *Result*: Non-owner attempts to remove operator whitelisting contract revert with `CallerNotOwnerWithData`; vector managed.
+**Empty Whitelist Addresses in setOperatorsWhitelists**
+ - *Severity*: Medium (input validation)
+ - *Test File*: `test/operators/whitelist.ts`
+ - *Result*: Calling with an empty addresses array reverts with `InvalidWhitelistAddressesLength`; vector managed.
