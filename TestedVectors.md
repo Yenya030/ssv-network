@@ -255,3 +255,6 @@ This document tracks security vectors analyzed in the repository.
 - *Severity*: Medium (token handling)
 - *Test File*: `test/security/non-compliant-withdraw.ts`
 - *Result*: `withdrawNetworkEarnings` reverts with 'TokenTransferFailed' when the token's `transfer` returns false, leaving balances unchanged.
+| Date | Vector | Severity | Result |
+|------|--------|----------|--------|
+| 2025-08-29 | Comprehensive manual review | N/A | No new vectors identified; Slither compilation failed due to solc mismatch |
